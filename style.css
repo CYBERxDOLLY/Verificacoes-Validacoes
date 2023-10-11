@@ -1,0 +1,44 @@
+.titulo {
+
+color: darkblue;
+background-color: aqua;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-size: 40px;
+align-items: center;
+justify-content: center;
+display: flex;
+flex-wrap: wrap;
+border: solid 2px;
+border-color: black;
+animation: fadeInOut 2s ease-in-out infinite alternate;
+
+
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+#respostas {
+    
+    color: black;
+    background-color: bisque;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    display: flexbox;
+    border: solid 2px;
+    
+    
+
+}

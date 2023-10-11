@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício de Verificações</title>
+    </head>
+    
+    <body>
+        
+        <h3 class="titulo">Exercício de Verificação</h3>
+        
+        <div id="respostas"></div>
+    
+        <script>
+            let nome = coletarInformacoes('Digite seu nome:');
+            let filho = coletarNumero('Quantos filhos você tem?');
+            let nomesFilhos = [];
+            for (let i = 1; i <= filho; i++) {
+                if (filho === 1) {
+                    let nomeFilho = coletarInformacoes('Digite o nome do seu filho:');
+                    nomesFilhos.push(nomeFilho);
+                } else {
+                    let nomeFilho = coletarInformacoes('Digite o nome do ' + i + 'º filho:');
+                    nomesFilhos.push(nomeFilho);
+                }
+            }
+    
+            let idade = coletarNumero('Agora digite sua idade');
+            let cidade = coletarInformacoes('Qual cidade você mora?');
+            let hobby = coletarInformacoes('O que você gosta de fazer para se divertir?');
+            let avaliacao = coletarInformacoes('O que você achou desse exercício?');
+    
+            // Função para exibir as respostas
+            function exibirRespostas() {
+                let respostasDiv = document.querySelector('#respostas');
+                respostasDiv.innerHTML = `
+                    <h2>Respostas:</h2>
+                    <p>O seu nome é: ${nome}</p>
+                    <p>Quantidade de filhos: ${filho}</p>
+            `;
+    
+                if (filho > 0) {
+                    if (filho === 1) {
+                        respostasDiv.innerHTML += `<p>O nome do seu filho é: ${nomesFilhos[0]}</p>`;
+                    } else {
+                        respostasDiv.innerHTML += `<p>Os nomes dos seus filhos são:</p>`;
+                        for (let i = 0; i < filho; i++) {
+                            respostasDiv.innerHTML += `<p>Filho ${i + 1}: ${nomesFilhos[i]}</p>`;
+                        }
+                    }
+                } else {
+                    respostasDiv.innerHTML += `<p>Você não tem filhos.</p>`;
+                }
+    
+                respostasDiv.innerHTML += `
+                    <p>Idade: ${idade}</p>
+                    <p>Cidade: ${cidade}</p>
+                    <p>Hobby: ${hobby}</p>
+                    <p>Avaliação do exercício: ${avaliacao}</p>
+                `;
+    
+                // Exibir no console
+                console.log('O seu nome é: ' + nome);
+                console.log('Quantidade de filhos: ' + filho);
+    
+                if (filho > 0) {
+                    if (filho === 1) {
+                        console.log('O nome do seu filho é: ' + nomesFilhos[0]);
+                    } else {
+                        console.log('Os nomes dos seus filhos são:');
+                        for (let i = 0; i < filho; i++) {
+                            console.log('Filho ' + (i + 1) + ': ' + nomesFilhos[i]);
+                        }
+                    }
+                } else {
+                    console.log('Você não tem filhos.');
+                }
+    
+                console.log('Idade: ' + idade);
+                console.log('Cidade: ' + cidade);
+                console.log('Hobby: ' + hobby);
+                console.log('Avaliação do exercício: ' + avaliacao);
+            }
+    
+            coletarInformacoes('Diga "OK" para exibir suas respostas:');
+            exibirRespostas();
+    
+            function coletarInformacoes(pergunta) {
+                let resposta = '';
+                do {
+                    resposta = prompt(pergunta);
+                    if (/\d/.test(resposta)) {
+                        alert('Use somente letras!');
+                    }
+                } while (/\d/.test(resposta));
+                return resposta;
+            }
+    
+            function coletarNumero(pergunta) {
+                let resposta = '';
+                do {
+                    resposta = prompt(pergunta);
+                    if (isNaN(resposta) || resposta.trim() === '') {
+                        alert('Use somente números!');
+                    }
+                } while (isNaN(resposta) || resposta.trim() === '');
+                return parseInt(resposta);
+            }
+        </script>
+    </body>
+</html>
